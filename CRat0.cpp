@@ -5,7 +5,7 @@ void CRat0::output() {
 	ofstream file;
 	file.open(outfile);
 	for (int i = 0; i < size; i++) {
-		file << vec[i].p << " " << vec[i].q << " ";
+		file << vec[i].p << "/" << vec[i].q << " ";
 	}
 	file.close();
 }
