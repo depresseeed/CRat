@@ -36,6 +36,30 @@ CRat::CRat(int input_size, fr* arr, const string FileName) {
 	outfile = FileName;
 }
 
+CRat::CRat(const CRat& old_one) {
+	size = old_one.get_size();
+	vec = new fr[size];
+	for (int i = 0; i < size; i++) {
+		vec[i].p = old_one.item(i).p;
+		vec[i].q = old_one.item(i).q;
+	}
+	outfile = old_one.outfile_name(); 
+}
+
+CRat& CRat::operator=(const CRat& oke) {
+	delete[] vec;
+	size = oke.get_size();
+	if (size == 0) vec = NULL;
+	else {
+		vec = new fr[size];
+		for (int i = 0; i < size; i++) {
+			vec[i].p = oke.item(i).p;
+			vec[i].q = oke.item(i).q;
+		}
+	}
+	return *this;
+}
+
 fr CRat::item(int i) const{
 	return vec[i];
 }
